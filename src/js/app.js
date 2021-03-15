@@ -3,7 +3,7 @@ const refs = {
     panes: document.querySelector('#tabs-1 [data-panes]'),
 };
 
-refs.controls.addEventListener('click', onControlsClick(event) )
+refs.controls.addEventListener('click', onControlsClick)
 
 function onControlsClick(event) {
     {
@@ -17,7 +17,7 @@ function onControlsClick(event) {
     const currentActiveControlItem = refs.controls.querySelector('.controls__item--active');
     if (currentActiveControlItem) {
         currentActiveControlItem.classList.remove('controls__item--active');
-        const paneId = getPaneId(currentActiveControlItem)
+        const paneId = getPaneId(currentActiveControlItem);
         const pane = getPaneById(paneId);
         pane.classList.remove('pane--active');
     }
@@ -30,9 +30,9 @@ function onControlsClick(event) {
     //console.log(controlItem.getAttribute('href').slice(1));
 }
 }
-function getPainId(control) {
+function getPaneId(control) {
     return control.getAttribute('href').slice(1);
 }
 function getPaneById(id) {
-    return refs.panes.querySelector(`#${paneId}`);
+    return refs.panes.querySelector(`#${id}`);
 }
