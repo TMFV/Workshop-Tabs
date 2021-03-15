@@ -21,6 +21,14 @@ class Tabs {
         control.classList.add(this._activeControlClass);
         this._setActivePane(control);
     }
+    _removeActiveTab() {
+        const currentActiveControlItem = this._refs.controls.querySelector(`.${this._activeControlClass}`);
+        if (!currentActiveControlItem) {
+            return;
+        }
+            currentActiveControlItem.classList.remove(`${this._activeControlClass}`);
+            this._removeActivePane(currentActiveControlItem);
+    }
     _setActivePane(control) {
          const paneId = this._getPaneId(control);
             const pane = this._getPaneById(paneId);
@@ -46,11 +54,7 @@ class Tabs {
             console.log('Кликнули не в ссылку');
             return;
         }
-        const currentActiveControlItem = this._refs.controls.querySelector(`.${this._activeControlClass}`);
-        if (currentActiveControlItem) {
-            currentActiveControlItem.classList.remove(`${this._activeControlClass}`);
-            this._removeActivePane(currentActiveControlItem);
-        }
+        this._removeActiveTab();
         const controlItem = event.target;
         controlItem.classList.add(this._activeControlClass);
         this._setActivePane(controlItem);
