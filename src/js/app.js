@@ -68,7 +68,7 @@ const tabs1 = new Tabs({
     activePaneClass: 'pane--active',
     defaultActiveTab: 3,
 })
-const tabs2 = new Tabs({
+new Tabs({
     rootSelector: '#tabs-2',
     activeControlClass: 'controls__item--active',
     activePaneClass: 'pane--active',
